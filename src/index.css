@@ -30,3 +30,9 @@ code {
     'Courier New',
     monospace;
 }
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
