@@ -1,0 +1,17 @@
+.Display {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  padding-right: 20px;
+  text-align: right;
+  line-height: 90px;
+  width: 455px;
+  height: 100px;
+  background-color: #000;
+  color: #fff;
+  font-size: 50px;
+  border-radius: 2%;
+  -webkit-border-radius: 2%;
+  -moz-border-radius: 2%;
+  -ms-border-radius: 2%;
+  -o-border-radius: 2%;
+}
