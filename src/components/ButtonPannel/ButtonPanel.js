@@ -1,39 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Button from '../Button/Button';
 import './ButtonPanel.css';
 
-const ButtonPanel = () => (
-  <div className="ButtonPanel">
-    <div className="Group One">
-      <Button content="AC" />
-      <Button content="+-" />
-      <Button content="%" />
-      <Button content="/" />
-    </div>
-    <div className="Group Two">
-      <Button content="7" />
-      <Button content="8" />
-      <Button content="9" />
-      <Button content="x" />
-    </div>
-    <div className="Group Three">
-      <Button content="4" />
-      <Button content="5" />
-      <Button content="6" />
-      <Button content="-" />
-    </div>
-    <div className="Group Four">
-      <Button content="1" />
-      <Button content="2" />
-      <Button content="3" />
-      <Button content="+" />
-    </div>
-    <div className="Group Five">
-      <Button content="0" />
-      <Button content="." />
-      <Button content="=" />
-    </div>
-  </div>
-);
+class ButtonPanel extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      groups: {
+        One: ['AC', '+/-', '%', '÷'],
+        Two: ['7', '8', '9', 'X'],
+        Three: ['4', '5', '6', '-'],
+        Four: ['1', '2', '3', '+'],
+        Five: ['0', '.', '='],
+      },
+    };
+  }
+
+  render() {
+    const { groups } = this.state;
+    return (
+      <div className="ButtonPanel">
+        { Object.keys(groups).map(group => (
+          <div key={group} className={`Group ${group}`}>
+            {
+              groups[group].map(item => (
+                <Button key={item} content={item} />
+              ))
+            }
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
 
 export default ButtonPanel;
