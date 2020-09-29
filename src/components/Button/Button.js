@@ -14,8 +14,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  content: '',
-  color: '',
+  content: 'x',
+  color: 'orangered',
   wide: false,
 };
 
