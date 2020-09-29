@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 
 import './Button.css';
 
-const Button = ({ content, type }) => (
-  <div className={`Button ${content === '0' ? 'zero' : ''} ${type === 'operator' ? 'orangered' : ''}`}>{content}</div>
+const Button = ({ content, color, wide }) => (
+  <div className={`Button ${wide === true ? 'zero' : ''} ${color === 'gray' ? 'gray' : ''}`}>{content}</div>
 );
 
 Button.propTypes = {
   content: PropTypes.string,
-  type: PropTypes.string,
+  color: PropTypes.string,
+  wide: PropTypes.bool,
 };
 
 Button.defaultProps = {
   content: '',
-  type: '',
+  color: '',
+  wide: false,
 };
 
 export default Button;
