@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Button.css';
 
 const Button = ({ content, color, wide }) => (
-  <div className={`Button ${wide === true ? 'zero' : ''} ${color === 'gray' ? 'gray' : ''}`}>{content}</div>
+  <div className={`Button ${wide ? 'zero' : ''} ${color}`}>{content}</div>
 );
 
 Button.propTypes = {
