@@ -7,7 +7,7 @@ const calculate = (data, content) => {
 
   if (operators.includes(content)) { return { total: next, next: '', operator: content }; }
 
-  if (digits.includes(content)) { return { total, next: ((next && next.match(/[0-9]/i) ? next : '') || '') + content, operator }; }
+  if (digits.includes(content)) { return { total, next: (next || '') + content, operator }; }
 
   switch (content) {
     case 'AC':

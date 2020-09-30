@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button/Button';
+
 import './ButtonPanel.css';
 
 class ButtonPanel extends Component {
@@ -16,6 +18,11 @@ class ButtonPanel extends Component {
     };
   }
 
+  handleClick = content => {
+    const { clickHandler } = this.props;
+    return clickHandler(content);
+  }
+
   render() {
     let color;
     let wide = false;
@@ -30,7 +37,13 @@ class ButtonPanel extends Component {
                   color = operators.includes(item) ? '' : 'gray';
                   wide = item === '0';
                   return (
-                    <Button key={item} content={item} color={color} wide={wide} />
+                    <Button
+                      key={item}
+                      content={item}
+                      color={color}
+                      wide={wide}
+                      onClick={this.handleClick}
+                    />
                   );
                 })
               }
@@ -40,5 +53,13 @@ class ButtonPanel extends Component {
     );
   }
 }
+
+ButtonPanel.propTypes = {
+  clickHandler: PropTypes.func,
+};
+
+ButtonPanel.defaultProps = {
+  clickHandler: () => {},
+};
 
 export default ButtonPanel;
