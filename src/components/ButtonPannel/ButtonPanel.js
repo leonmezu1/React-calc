@@ -19,6 +19,7 @@ class ButtonPanel extends Component {
   render() {
     let color;
     let wide = false;
+    const operators = ['÷', '×', '-', '+', '='];
     const { groups } = this.state;
     return (
       <div className="ButtonPanel">
@@ -26,11 +27,7 @@ class ButtonPanel extends Component {
           <div key={group} className={`Group ${group}`}>
             {
                 groups[group].map(item => {
-                  if (item === '÷' || item === '×' || item === '-' || item === '+' || item === '=') {
-                    color = '';
-                  } else {
-                    color = 'gray';
-                  }
+                  color = operators.includes(item) ? '' : 'gray';
                   wide = item === '0';
                   return (
                     <Button key={item} content={item} color={color} wide={wide} />
