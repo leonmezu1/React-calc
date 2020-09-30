@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button/Button';
+
 import './ButtonPanel.css';
 
 class ButtonPanel extends Component {
@@ -16,9 +18,15 @@ class ButtonPanel extends Component {
     };
   }
 
+  handleClick = content => {
+    const { clickHandler } = this.props;
+    return clickHandler(content);
+  }
+
   render() {
     let color;
     let wide = false;
+    const operators = ['÷', '×', '-', '+', '='];
     const { groups } = this.state;
     return (
       <div className="ButtonPanel">
@@ -26,14 +34,16 @@ class ButtonPanel extends Component {
           <div key={group} className={`Group ${group}`}>
             {
                 groups[group].map(item => {
-                  if (item === '÷' || item === '×' || item === '-' || item === '+' || item === '=') {
-                    color = '';
-                  } else {
-                    color = 'gray';
-                  }
+                  color = operators.includes(item) ? '' : 'gray';
                   wide = item === '0';
                   return (
-                    <Button key={item} content={item} color={color} wide={wide} />
+                    <Button
+                      key={item}
+                      content={item}
+                      color={color}
+                      wide={wide}
+                      onClick={this.handleClick}
+                    />
                   );
                 })
               }
@@ -43,5 +53,13 @@ class ButtonPanel extends Component {
     );
   }
 }
+
+ButtonPanel.propTypes = {
+  clickHandler: PropTypes.func,
+};
+
+ButtonPanel.defaultProps = {
+  clickHandler: () => {},
+};
 
 export default ButtonPanel;
